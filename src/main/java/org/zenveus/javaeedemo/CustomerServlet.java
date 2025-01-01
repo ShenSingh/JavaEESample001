@@ -1,5 +1,7 @@
 package org.zenveus.javaeedemo;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,8 +23,6 @@ public class CustomerServlet extends HttpServlet {
 
         System.out.println("");
         try {
-            // Load the JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a connection to the database
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ZenVeusBags", "root", "Shen@1234");
@@ -60,10 +60,6 @@ public class CustomerServlet extends HttpServlet {
 
             // Write the JSON response
             resp.getWriter().write(jsonBuilder.toString());
-        } catch (ClassNotFoundException e) {
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().write("{\"error\":\"JDBC Driver not found.\"}");
-            e.printStackTrace();
         } catch (SQLException e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             resp.getWriter().write("{\"error\":\"Database error occurred.\"}");
@@ -78,26 +74,19 @@ public class CustomerServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
-        System.out.println("Request : "+req.getReader().readLine());
-
         // Read the updated customer data from the request body
         StringBuilder requestBody = new StringBuilder();
         String line;
         while ((line = req.getReader().readLine()) != null) {
             requestBody.append(line);
-            System.out.println("Line: " + line);
         }
 
-        // Manually parse the JSON data
-        String jsonString = requestBody.toString();
-        String customerId = jsonString.split("\"id\":\"")[1].split("\"")[0];
-        String name = jsonString.split("\"name\":\"")[1].split("\"")[0];
-        String email = jsonString.split("\"email\":\"")[1].split("\"")[0];
-
-        System.out.println("Customer ID: " + customerId);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-
+        // Parse the JSON data using Gson
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
+        String customerId = jsonObject.get("id").getAsString();
+        String name = jsonObject.get("name").getAsString();
+        String email = jsonObject.get("email").getAsString();
 
         try {
             // Load the JDBC driver

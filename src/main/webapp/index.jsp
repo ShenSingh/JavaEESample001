@@ -6,11 +6,11 @@
     <title>Customer & Item Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background: linear-gradient(to right, #4a90e2, #50d2c2);">
 <!-- Navigation Header -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Company</a>
+        <a class="navbar-brand" href="#">ZenVeus</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,25 +32,25 @@
 
 <div class="container">
     <!-- Customer Section -->
-    <section id="customerSection" class="mb-5">
+    <section id="customerSection" class="mb-5" style="margin-top: 50px">
         <h3>Customer Form</h3>
-        <div class="row mb-3">
+        <div class="row mb-2">
             <div class="col-md-4">
                 <label for="customerId" class="form-label">Customer ID</label>
-                <input type="text" class="form-control" id="customerId" placeholder="Enter Customer ID">
+                <input type="text" class="form-control" id="customerId" placeholder="Enter Customer ID" style="background-color: transparent">
             </div>
             <div class="col-md-4">
                 <label for="customerName" class="form-label">Customer Name</label>
-                <input type="text" class="form-control" id="customerName" placeholder="Enter Customer Name">
+                <input type="text" class="form-control" id="customerName" placeholder="Enter Customer Name" style="background-color: transparent">
             </div>
             <div class="col-md-4">
                 <label for="customerEmail" class="form-label">Customer Email</label>
-                <input type="email" class="form-control" id="customerEmail" placeholder="Enter Customer Email">
+                <input type="email" class="form-control" id="customerEmail" placeholder="Enter Customer Email" style="background-color: transparent">
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-end">
-                <button class="btn btn-success" id="addCustomerBtn">Add Customer</button>
+                <button class="btn btn-success" id="addCustomerBtn" style="background-color: yellow;color: black">Add Customer</button>
             </div>
         </div>
 
@@ -73,29 +73,29 @@
     </section>
 
     <!-- Item Section -->
-    <section id="itemSection" class="mb-5" style="display: none">
+    <section id="itemSection" class="mb-5" style="display: none; margin-top: 50px">
         <h3>Item Form</h3>
         <div class="row mb-3">
             <div class="col-md-3">
                 <label for="itemCode" class="form-label">Item Code</label>
-                <input type="text" class="form-control" id="itemCode" placeholder="Enter Item Code">
+                <input type="text" class="form-control" id="itemCode" placeholder="Enter Item Code" style="background-color: transparent">
             </div>
             <div class="col-md-3">
                 <label for="itemName" class="form-label">Item Name</label>
-                <input type="text" class="form-control" id="itemName" placeholder="Enter Item Name">
+                <input type="text" class="form-control" id="itemName" placeholder="Enter Item Name" style="background-color: transparent">
             </div>
             <div class="col-md-3">
                 <label for="itemPrice" class="form-label">Item Price</label>
-                <input type="number" class="form-control" id="itemPrice" placeholder="Enter Item Price">
+                <input type="number" class="form-control" id="itemPrice" placeholder="Enter Item Price" style="background-color: transparent">
             </div>
             <div class="col-md-3">
                 <label for="itemQtyOnHand" class="form-label">Quantity On Hand</label>
-                <input type="number" class="form-control" id="itemQtyOnHand" placeholder="Enter Quantity On Hand">
+                <input type="number" class="form-control" id="itemQtyOnHand" placeholder="Enter Quantity On Hand" style="background-color: transparent">
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-end">
-                <button class="btn btn-success" id="addItemBtn">Add Item</button>
+                <button class="btn btn-success" id="addItemBtn" style="background-color: yellow; color: black">Add Item</button >
             </div>
         </div>
 
@@ -246,7 +246,7 @@
                 <tr>
                     <td id="orderTotal">0.00</td>
                     <td>
-                        <input type="number" id="cashAmount" class="form-control" oninput="calculateBalance()" placeholder="Enter cash amount">
+                        <input type="number" id="cashAmount" class="form-control" oninput="calculateBalance()" placeholder="Enter cash amount" style="background-color: transparent">
                     </td>
                     <td id="balance">0.00</td>
                 </tr>
